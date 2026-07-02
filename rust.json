@@ -1,0 +1,21 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Rust preset",
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 9am on saturday"]
+  },
+  "packageRules": [
+    {
+      "description": "Group all non-major Rust crate updates into a single PR",
+      "matchManagers": ["cargo"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "cargo dependencies"
+    },
+    {
+      "description": "Group Tauri updates (crates and npm packages)",
+      "matchPackageNames": ["@tauri-apps/**", "tauri", "tauri-build", "tauri-plugin-*"],
+      "groupName": "Tauri"
+    }
+  ]
+}
