@@ -1,0 +1,34 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "TypeScript preset",
+  "postUpdateOptions": ["pnpmDedupe"],
+  "packageRules": [
+    {
+      "description": "Pin npm dependency versions",
+      "matchManagers": ["npm"],
+      "rangeStrategy": "pin"
+    },
+    {
+      "description": "Group TypeScript and type definitions",
+      "matchPackageNames": ["typescript", "@types/**"],
+      "groupName": "typescript-and-types"
+    },
+    {
+      "matchPackageNames": ["react", "react-dom", "@types/react", "@types/react-dom"],
+      "groupName": "React"
+    },
+    {
+      "matchPackageNames": ["@testing-library/**"],
+      "groupName": "Testing Library"
+    },
+    {
+      "matchPackageNames": ["vite", "vitest", "@vitejs/**", "@vitest/**", "jsdom"],
+      "groupName": "Vite / Vitest"
+    },
+    {
+      "description": "Group Electron updates separately",
+      "matchPackageNames": ["electron", "electron-builder", "@electron-forge/**", "electron-*"],
+      "groupName": "electron"
+    }
+  ]
+}

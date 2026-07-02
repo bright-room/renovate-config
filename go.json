@@ -1,0 +1,15 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Go preset",
+  "postUpdateOptions": ["gomodTidy"],
+  "packageRules": [
+    {
+      "groupName": "golang",
+      "matchPackageNames": ["go"]
+    },
+    {
+      "groupName": "golang.org/x",
+      "matchPackageNames": ["golang.org/x/**"]
+    }
+  ]
+}

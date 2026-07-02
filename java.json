@@ -1,0 +1,5 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Java preset",
+  "extends": ["group:springBoot"]
+}
