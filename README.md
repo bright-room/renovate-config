@@ -24,7 +24,7 @@ Multi-language repositories (e.g. Tauri apps, monorepos) extend every applicable
 
 | Preset | File | Contents |
 |---|---|---|
-| base | `default.json` | Schedule (Saturday before 9am JST), labels, no PR limits, `separateMinorPatch`, mise enabled, 7-day minimum release age, automerge (major: manual merge, except GitHub Actions which automerge unconditionally), pinned GitHub Action digests, comment-tagged version tracking |
+| base | `default.json` | Schedule (Saturday before 9am JST), labels, no PR limits, `separateMinorPatch`, mise enabled, 7-day minimum release age, automerge (major: manual merge, except GitHub Actions where all update types automerge), pinned GitHub Action digests, comment-tagged version tracking |
 | `java` | `java.json` | Groups Spring Boot updates |
 | `kotlin` | `kotlin.json` | Groups Kotlin monorepo and Spring Boot updates |
 | `go` | `go.json` | `gomodTidy`, groups Go toolchain and `golang.org/x` updates |
@@ -38,9 +38,11 @@ that don't use those frameworks are unaffected.
 
 ## Comment-tagged version tracking
 
-The base preset includes a generic regex manager: annotate any version line with a
-`# renovate:` comment and Renovate will track it. Works in YAML, TOML, Terraform,
-Dockerfile, Makefile, and `.env` files.
+The base preset includes a generic regex manager: annotate a key/value version line
+(`KEY: value`, `KEY = value`, `KEY := value`, `KEY ?= value`, `ENV`/`ARG`/`export` prefixes)
+with a `# renovate:` comment on the line directly above and Renovate will track it.
+Works in YAML, TOML, Terraform, Dockerfile, Makefile, and `.env` files. Non key/value
+syntax such as Dockerfile `FROM image:tag` is not covered.
 
 ```yaml
 # renovate: datasource=github-releases depName=hashicorp/terraform
