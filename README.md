@@ -42,7 +42,8 @@ The base preset includes a generic regex manager: annotate a key/value version l
 (`KEY: value`, `KEY = value`, `KEY := value`, `KEY ?= value`, `ENV`/`ARG`/`export` prefixes)
 with a `# renovate:` comment on the line directly above and Renovate will track it.
 Works in YAML, TOML, Terraform, Dockerfile, Makefile, and `.env` files. Non key/value
-syntax such as Dockerfile `FROM image:tag` is not covered.
+syntax such as Dockerfile `FROM image:tag` is not covered here — those are already
+handled by Renovate's built-in `dockerfile` manager.
 
 ```yaml
 # renovate: datasource=github-releases depName=hashicorp/terraform
