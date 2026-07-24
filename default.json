@@ -23,8 +23,31 @@
   },
   "minimumReleaseAge": "7 days",
   "automerge": true,
-  "major": {
-    "minimumReleaseAge": "14 days",
-    "automerge": false
-  }
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["major"],
+      "automerge": false
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "automerge": true
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Update any version annotated with a `# renovate: datasource=... depName=...` comment",
+      "managerFilePatterns": [
+        "/\\.ya?ml$/",
+        "/\\.toml$/",
+        "/\\.tf(vars)?$/",
+        "/(^|/)Dockerfile[^/]*$/",
+        "/(^|/)Makefile$/",
+        "/\\.env(\\..+)?$/"
+      ],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>[a-z0-9.-]+?) depName=(?<depName>[^\\s]+?)(?: packageName=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?[ \\t]*\\r?\\n[ \\t]*(?:ENV +|ARG +|export +)?[A-Za-z0-9_.-]+\\s*(?::=|[:=])\\s*[\"']?(?<currentValue>[^\\s\"']+)[\"']?"
+      ]
+    }
+  ]
 }
