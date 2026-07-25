@@ -24,13 +24,14 @@ Multi-language repositories (e.g. Tauri apps, monorepos) extend every applicable
 
 | Preset | File | Contents |
 |---|---|---|
-| base | `default.json` | Schedule (Saturday before 9am JST), labels, no PR limits, `separateMinorPatch`, mise enabled, 7-day minimum release age, automerge (major: manual merge, except GitHub Actions where all update types automerge), pinned GitHub Action digests, comment-tagged version tracking |
+| base | `default.json` | `config:best-practices` (pinned digests, dev dependency pinning, config migration, abandonment warnings, npm 3-day release age), schedule (Saturday before 9am JST), labels, no PR limits, `separateMinorPatch`, mise enabled, 7-day minimum release age, weekly lock file maintenance (Saturday), automerge (major: manual merge, except GitHub Actions where all update types automerge), comment-tagged version tracking |
 | `java` | `java.json` | Groups Spring Boot updates |
 | `kotlin` | `kotlin.json` | Groups Kotlin monorepo and Spring Boot updates |
 | `go` | `go.json` | `gomodTidy`, groups Go toolchain and `golang.org/x` updates |
-| `rust` | `rust.json` | Groups non-major cargo updates and Tauri updates, lock file maintenance |
+| `python` | `python.json` | Groups non-major Python package updates |
+| `rust` | `rust.json` | Groups non-major cargo updates and Tauri updates |
 | `typescript` | `typescript.json` | Pins npm dependency versions, `pnpmDedupe`, groups TypeScript/@types, React, Testing Library, Vite/Vitest, Electron |
-| `terraform` | `terraform.json` | Lock file maintenance, tracks `terraform_version` in GitHub workflow files |
+| `terraform` | `terraform.json` | Tracks `terraform_version` in GitHub workflow files |
 
 Framework-specific rules (Spring Boot, React, Electron, Tauri) live inside the relevant language
 preset: grouping rules only take effect when the matching packages are present, so repositories
