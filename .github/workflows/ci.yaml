@@ -1,4 +1,4 @@
-name: validate
+name: ci
 
 on:
   pull_request:
@@ -12,7 +12,7 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-  renovate-config:
+  validate:
     runs-on: ubuntu-latest
     permissions:
       contents: read
