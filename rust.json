@@ -1,10 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "description": "Rust preset",
-  "lockFileMaintenance": {
-    "enabled": true,
-    "schedule": ["before 9am on saturday"]
-  },
   "packageRules": [
     {
       "description": "Group all non-major Rust crate updates into a single PR",
