@@ -4,10 +4,6 @@
   "terraform": {
     "enabled": true
   },
-  "lockFileMaintenance": {
-    "enabled": true,
-    "schedule": ["before 9am on saturday"]
-  },
   "customManagers": [
     {
       "customType": "regex",

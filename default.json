@@ -2,8 +2,7 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "description": "Shared base preset for all bright-room repositories",
   "extends": [
-    "config:recommended",
-    "helpers:pinGitHubActionDigests"
+    "config:best-practices"
   ],
   "ignorePaths": [
     "**/node_modules/**",
@@ -22,6 +21,9 @@
     "enabled": true
   },
   "minimumReleaseAge": "7 days",
+  "lockFileMaintenance": {
+    "schedule": ["before 9am on saturday"]
+  },
   "automerge": true,
   "packageRules": [
     {
