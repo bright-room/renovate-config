@@ -6,10 +6,7 @@
   ],
   "ignorePaths": [
     "**/node_modules/**",
-    "**/bower_components/**",
-    ".github/workflows/security.yml",
-    ".github/workflows/security-jvm.yml",
-    ".github/workflows/security-rust.yml"
+    "**/bower_components/**"
   ],
   "timezone": "Asia/Tokyo",
   "schedule": ["before 9am on saturday"],
