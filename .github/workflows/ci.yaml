@@ -15,6 +15,13 @@ jobs:
     permissions:
       contents: read
     steps:
+      # サプライチェーン攻撃の検知に向けた計測(analyze モード)。
+      # syscall を capture して falco-analyze ジョブで通信先・プロセスを可視化する。
+      # 検知しても fail させない。
+      - name: Start Falco
+        uses: falcosecurity/falco-actions/start@558a3ceeee9403e1c875ffbeb704c34c93e24752 # main(タグ未発行のため commit を固定)
+        with:
+          mode: analyze
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           persist-credentials: false
@@ -25,3 +32,27 @@ jobs:
         run: |
           npx --yes --package "renovate@${RENOVATE_VERSION}" -- renovate-config-validator --strict \
             default.json go.json java.json kotlin.json rust.json terraform.json typescript.json renovate.json
+      - name: Stop Falco
+        if: always()
+        uses: falcosecurity/falco-actions/stop@558a3ceeee9403e1c875ffbeb704c34c93e24752 # main(タグ未発行のため commit を固定)
+        with:
+          mode: analyze
+
+  # capture を解析して、ジョブ中の通信先 / DNS / プロセスをジョブサマリに出す。
+  # 収集が目的のため、検知があっても fail させない。
+  falco-analyze:
+    needs: [validate]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    # 計測が目的のジョブなので、capture が無い等で失敗しても CI をブロックしない
+    continue-on-error: true
+    permissions:
+      contents: read
+      actions: read
+
+    steps:
+      - name: Analyze
+        uses: falcosecurity/falco-actions/analyze@558a3ceeee9403e1c875ffbeb704c34c93e24752 # main(タグ未発行のため commit を固定)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
