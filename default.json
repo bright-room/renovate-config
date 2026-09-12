@@ -25,7 +25,7 @@
   "automerge": true,
   "packageRules": [
     {
-      "description": "npm も 7 日に揃える(config:best-practices が extends する security:minimumReleaseAgeNpm は npm を 3 日にするため)。lockFileMaintenance / pin / bump などの適用除外は上書きしないよう updateTypes を絞る",
+      "description": "Raise npm to the same 7-day minimum release age (`config:best-practices` extends `security:minimumReleaseAgeNpm`, which sets npm to 3 days). Narrow `updateTypes` so the exemptions for lock file maintenance, pin and bump are not overridden",
       "matchDatasources": ["npm"],
       "matchUpdateTypes": ["major", "minor", "patch", "digest"],
       "minimumReleaseAge": "7 days",
