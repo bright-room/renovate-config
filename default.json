@@ -46,7 +46,7 @@
         "/\\.env(\\..+)?$/"
       ],
       "matchStrings": [
-        "# renovate: datasource=(?<datasource>[a-z0-9._-]+?) depName=(?<depName>[^\\s]+?)(?: packageName=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?[ \\t]*\\r?\\n[ \\t]*(?:ENV +|ARG +|export +)?[A-Za-z0-9_.-]+\\s*(?::=|\\?=|[:=])\\s*[\"']?(?<currentValue>[^\\s\"'@]+)(?:@(?<currentDigest>sha256:[0-9a-f]{64}))?[\"']?"
+        "# renovate: datasource=(?<datasource>[a-z0-9._-]+?) depName=(?<depName>[^\\s]+?)(?: packageName=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?[ \\t]*\\r?\\n[ \\t]*(?:ENV +|ARG +|export +)?[A-Za-z0-9_.-]+\\s*(?::=|\\?=|[:=])\\s*[\"']?(?<currentValue>[^\\s\"']+?)(?:@(?<currentDigest>sha256:[0-9a-f]{64}))?(?:[\"']|[ \\t]|\\r?\\n|$)"
       ]
     }
   ]
