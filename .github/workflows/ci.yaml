@@ -30,8 +30,9 @@ jobs:
           # renovate: datasource=npm depName=renovate
           RENOVATE_VERSION: 43.280.4
         run: |
-          npx --yes --package "renovate@${RENOVATE_VERSION}" -- renovate-config-validator --strict \
-            default.json go.json java.json kotlin.json rust.json terraform.json typescript.json renovate.json
+          # 個別列挙だと preset を足したときに載せ忘れる(実際 python.json が漏れていた)。
+          # リポジトリ直下の .json はすべて preset なので glob で拾う。
+          npx --yes --package "renovate@${RENOVATE_VERSION}" -- renovate-config-validator --strict *.json
       - name: Stop Falco
         if: always()
         uses: falcosecurity/falco-actions/stop@558a3ceeee9403e1c875ffbeb704c34c93e24752 # main(タグ未発行のため commit を固定)
