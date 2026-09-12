@@ -25,6 +25,13 @@
   "automerge": true,
   "packageRules": [
     {
+      "description": "npm も 7 日に揃える(config:best-practices が extends する security:minimumReleaseAgeNpm は npm を 3 日にするため)。lockFileMaintenance / pin / bump などの適用除外は上書きしないよう updateTypes を絞る",
+      "matchDatasources": ["npm"],
+      "matchUpdateTypes": ["major", "minor", "patch", "digest"],
+      "minimumReleaseAge": "7 days",
+      "internalChecksFilter": "strict"
+    },
+    {
       "matchUpdateTypes": ["major"],
       "automerge": false
     },
