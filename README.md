@@ -24,7 +24,7 @@ Multi-language repositories (e.g. Tauri apps, monorepos) extend every applicable
 
 | Preset | File | Contents |
 |---|---|---|
-| base | `default.json` | `config:best-practices` (pinned digests, dev dependency pinning, config migration, abandonment warnings, npm 3-day release age), schedule (Saturday before 9am JST), labels, no PR limits, `separateMinorPatch`, mise enabled, 7-day minimum release age, weekly lock file maintenance (Saturday), automerge (major: manual merge, except GitHub Actions where all update types automerge), comment-tagged version tracking |
+| base | `default.json` | `config:best-practices` (pinned digests, dev dependency pinning, config migration, abandonment warnings), schedule (Saturday before 9am JST), labels, no PR limits, `separateMinorPatch`, mise enabled, 7-day minimum release age (including a package rule that raises npm from the 3-day default of `config:best-practices`), weekly lock file maintenance (Saturday), automerge (major: manual merge, except GitHub Actions where all update types automerge), comment-tagged version tracking |
 | `java` | `java.json` | Groups Spring Boot updates |
 | `kotlin` | `kotlin.json` | Groups Kotlin monorepo and Spring Boot updates |
 | `go` | `go.json` | `gomodTidy`, groups Go toolchain and `golang.org/x` updates |
