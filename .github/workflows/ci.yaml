@@ -21,7 +21,7 @@ jobs:
       - name: renovate-config-validator
         env:
           # renovate: datasource=npm depName=renovate
-          RENOVATE_VERSION: 43.280.4
+          RENOVATE_VERSION: 44.257.3
         run: |
           # 個別列挙だと preset を足したときに載せ忘れる(実際 python.json が漏れていた)。
           # リポジトリ直下の .json はすべて preset なので glob で拾う。
